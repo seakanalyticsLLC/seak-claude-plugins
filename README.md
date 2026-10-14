@@ -4,27 +4,25 @@ Claude Code plugins for Seak Analytics client engagements.
 
 ## Plugins
 
-- **seak-client-work** — working rules for Claude Code on a client's repo or machine: take a brief, work items on branches with PRs (never merged), keep client repos free of Seak/personal material, and report status back as comments in the client's work tracker.
+- **seak-client-work** — working rules for Claude Code on a client's repo or machine: pick up a brief from the client's tracker, work items on branches with PRs (never merged), keep client repos free of Seak/personal material, and report status back as comments in the client's work tracker.
 
 This repo intentionally contains **no client information** and no references to Seak's own storage. It's safe to install on a client's machine.
 
 ## Install (once per machine)
 
-Installs at **user scope**: recorded in that machine's user settings, nothing is written to any repository.
+VS Code extension: type `/plugins` in the Claude Code panel → **Marketplaces** → add `seakanalyticsLLC/seak-claude-plugins` → **Plugins** → **seak-client-work** → **Install** → **Install for you** (user scope; never "for this project", which writes to the repo).
+
+CLI:
 
 ```bash
 claude plugin marketplace add seakanalyticsLLC/seak-claude-plugins
 claude plugin install seak-client-work@seak-analytics
 ```
 
-The repo is private, so the machine needs read access to it (signed-in `gh`/git credentials or a fine-grained token with read-only access to this repo). Making the repo public removes that requirement.
-
 ## Update
 
-```bash
-claude plugin marketplace update seak-analytics
-```
+VS Code: `/plugins` → **Marketplaces** → refresh icon on `seak-analytics`. CLI: `claude plugin marketplace update seak-analytics`.
 
 ## Use
 
-Paste a brief into a Claude Code session in the client repo and say "work this brief". The `client-brief` skill loads automatically for client work; you can also invoke it directly as `/seak-client-work:client-brief`.
+In a Claude Code session in the client repo: "work the brief on #<parent work item>". The `client-brief` skill finds the newest `Brief for Claude Code` comment on that item. You can also paste a brief, or invoke the skill directly as `/seak-client-work:client-brief`.

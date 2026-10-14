@@ -1,6 +1,6 @@
 {
   "name": "seak-client-work",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Take a work brief, work client tasks on branches with PRs, keep client repos clean, and report status back in the client's tracker",
   "author": {
     "name": "Seak Analytics LLC"

@@ -1,6 +1,6 @@
 ---
 name: client-brief
-description: Use whenever working in a client's repository or on a client's machine for Seak Analytics, especially when given a work brief, asked to pick up work items or tasks, open PRs, or report status. Covers intake of a brief, branch/commit/PR conventions, keeping client repos free of Seak or personal material, and the status comment format used to report back.
+description: Use whenever working in a client's repository or on a client's machine for Seak Analytics, especially when told to work a brief (e.g. "work the brief on #133"), pick up work items or tasks, open PRs, or report status. Covers finding the brief in the client's tracker, branch/commit/PR conventions, keeping client repos free of Seak or personal material, and the status comment format used to report back.
 ---
 
 # Seak Analytics client work
@@ -16,9 +16,15 @@ You are working for Anthony Harrison (Seak Analytics LLC), a consultant, on a **
 - **Never merge, never close.** Open PRs for Anthony to review. Don't merge, don't approve, and don't move work items to Done/Closed.
 - **Don't guess business rules.** If a decision isn't in the brief or the work item, stop that item and report it as a decision for Anthony.
 
-## 2. Intake
+## 2. Finding the brief
 
-The brief is pasted into the session or provided as a file. Before starting:
+Briefs usually live **in the client's tracker** as a comment whose first line starts with `**Brief for Claude Code — YYYY-MM-DD**`, posted on a parent work item.
+
+- If Anthony names a work item ("work the brief on #133"), read that item's comments and use the **newest** comment that starts with `Brief for Claude Code`. Ignore older briefs on the same item unless the new one says otherwise.
+- If he pastes a brief or gives a file instead, use that.
+- If no brief can be found, say so and ask — don't infer one from the work items.
+
+## 3. Intake
 
 1. Read the brief end to end.
 2. For each item, read the work item itself: its description (often lists files, branch name, dependencies) and its latest comments (often hold the client's recent answers).
@@ -26,7 +32,7 @@ The brief is pasted into the session or provided as a file. Before starting:
 4. Check dependencies: if an item is blocked by another (shared files, "blocked by" links), respect the order the brief gives.
 5. If the brief is unclear on something that changes the outcome, ask Anthony one concise question before starting that item. Start the other items meanwhile.
 
-## 3. Doing the work
+## 4. Doing the work
 
 For each item:
 
@@ -37,7 +43,7 @@ For each item:
 - **Validate** what you can before pushing (build, tests, schema/JSON validity, opening the project in its tool if available).
 - **Open a PR** into the default branch, linked to the item. Use a **draft PR** when the brief says the item needs Anthony's go-ahead. PR description: what changed, why, how to verify, and any decision needed.
 
-## 4. Reporting back (the bridge)
+## 5. Reporting back (the bridge)
 
 When an item's PR is up, or the item is blocked, add **one comment on the work item** in exactly this format, so Anthony can find and collect it:
 
@@ -50,10 +56,10 @@ When an item's PR is up, or the item is blocked, add **one comment on the work i
 - Notes: <anything out of scope you noticed, or "None">
 ```
 
-When every item in the brief is handled, add one summary comment on the **parent** item named in the brief: one line per item (id, PR link, state, decision needed if any).
+When every item in the brief is handled, add one summary comment on the **parent** item the brief was posted on: one line per item (id, PR link, state, decision needed if any), starting with `**Status for Anthony — YYYY-MM-DD (brief summary)**`.
 
 If there is no way to write to the tracker from this machine, put the same status block at the end of each PR description and tell Anthony in the session that tracker comments couldn't be posted.
 
-## 5. Finishing
+## 6. Finishing
 
 End the session with a short summary in the terminal: items done, PRs opened, items blocked and why, and the decisions waiting on Anthony. Don't restate the brief.
