@@ -1,0 +1,14 @@
+{
+  "name": "seak-analytics",
+  "description": "Seak Analytics working rules for Claude Code on client engagements",
+  "owner": {
+    "name": "Seak Analytics LLC"
+  },
+  "plugins": [
+    {
+      "name": "seak-client-work",
+      "source": "./plugins/seak-client-work",
+      "description": "Take a work brief, work client tasks on branches with PRs, keep client repos clean, and report status back in the client's tracker"
+    }
+  ]
+}
